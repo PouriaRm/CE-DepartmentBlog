@@ -22,7 +22,7 @@ A blogging engine based on Flask. For an [Flask](https://palletsprojects.com/p/f
 • User Notifications for assignments in their panel<br>
 • Application Programming Interfaces (APIs)<br>
 
-## How to run it on Local Host?
+## How to run it on your host?
 If you don't know how to run flask project or even have no idea about pip please check [this article](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).
 
 After you make sure about doing everything correctly, follow the diagram of the project structure:
