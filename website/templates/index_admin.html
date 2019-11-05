@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for posts in post %}
+<div class="post">
+			<h2 class="title">{{  posts.post_title }}</h2>
+			<p class="date"> {{  2017 }}</p>
+			<div class="entry">
+                <p> {{ posts.post_content[0:200] + "..."  }} </p>
+                <p >{{ "نویسنده: "+ posts.author.user_name + " ،دسته بندی: " + posts.cat.cat_name +  " "}}</p>
+				<p class="links"><a href="#" class="comments">نظرات (64)</a> &nbsp;&nbsp;&nbsp; <a href="{{ url_for('showPost', postid=posts.post_id)}}" class="permalink">ادامه مطلب</a></p>
+                 <li><a href="{{ url_for('index_admin_del', postid=posts.posts_id)}}">حذف کردن خبر</a></li>
+					<li><a href="{{ url_for('index_admin_edit', postid=posts.posts_id)}}">ویرایش</a></li>
+
+			</div>
+<form  class="entry" id = 'contact' action ='{{ url_for('index_admin_edit') }}' method = 'Post' >
+    <input style="display:block" name = 'name' type = 'text' value="عنوان" />
+     <input style="display:block" name = 'cat' type = 'text' value="دسته بندی" />
+     <input style="display:block" name = 'tag' type = 'text' value="برچسب:" />
+    <textarea style="display:block" name = 'comment'>متن پست: </textarea>
+    <input name = 'submit' type="submit" value="ارسال"/>
+</form>
+		</div>
+ {% endfor %}
+{% endblock %}

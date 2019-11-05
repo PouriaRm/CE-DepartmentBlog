@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for posts in course %}
+<div class="post">
+			<h2 class="title">{{  posts.course_title }}</h2>
+			<p class="date"> {{  posts.course_date }}</p>
+			<div class="entry">
+                <p> {{ posts.course_description[0:200] + "..."  }} </p>
+                <p > "نام استاد: " {{ author[loop.index0] }} </p>
+				<p class="links"><a href="#" class="comments">نظرات (64)</a> &nbsp;&nbsp;&nbsp; <a href="{{ url_for('course', coursetime=posts.course_id)}}" class="permalink">ادامه مطلب</a></p>
+			</div>
+		</div>
+ {% endfor %}
+{% endblock %}

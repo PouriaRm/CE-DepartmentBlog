@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 class="title">{{  item.course_title }}</h2>
+{% endblock %}
+{% block content %}
+         {% for course in news %}
+<div class="post">
+			<h2 class="title">{{  course.news_title }}</h2>
+			<p class="date">{{ course.course_news.course_date }}</p>
+			<div class="entry">
+				 {{ course.news_description }}
+                   <p > نام استاد:  {{ author }} </p>
+            </div>
+  </div><!-- /.blog-post -->
+ {% endfor %}
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=item.course_id)}}">سیلابس درس</a></li>
+					<li><a href="{{ url_for('assignment', coursetime=item.course_id)}}">تکالیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=item.course_id)}}">منابع</a></li>
+					<li><a href="{{ url_for('course', coursetime=item.course_id)}}">آرشیو اخبار</a></li>
+{% endblock %}
+

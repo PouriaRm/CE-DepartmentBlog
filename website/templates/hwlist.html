@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 class="title"></h2>
+{% endblock %}
+{% block content %}
+
+<div class="post">
+			<h2 class="title"></h2>
+			<p class="date"></p>
+
+    <div class=>
+   <table>
+    <thead>
+		<tr>
+			<th>اسم درس</th>
+			<th>اسم دانشجو</th>
+			<th>اسم فایل</th>
+			<th>فایل</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for file in sharedfile %}
+		<tr>
+			<td>{{ course }}</td>
+			<td>{{ author }}</td>
+			<td>file.shared_file_title</td>
+			<td>file.shared_file_path</td>
+		</tr>
+
+    {% endfor %}
+   </tbody>
+</table>
+ </div>
+  </div><!-- /.blog-post -->
+
+
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=course)}}">سیلابس درس</a></li>
+					<li><a href="{{ url_for('assignment', coursetime=course)}}">تکالیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=course)}}">منابع</a></li>
+					<li><a href="{{ url_for('course', coursetime=course)}}">آرشیو اخبار</a></li>
+{% endblock %}
+

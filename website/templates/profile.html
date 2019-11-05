@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post">
+		<form  class="entry" id = 'contact' method = 'Post' >
+            <p>نام کاربری: {{ user.user_name }}</p>
+            <p>ایمیل: {{ user.user_email }}</p>
+              <p>دروس این ترم:  {{ course.course_title }}</p>
+          </form>
+  </div><!-- /.blog-post -->
+
+{% endblock %}
+
+{% block side %}
+    <li><p>test</p></li>
+
+{% endblock %}
+

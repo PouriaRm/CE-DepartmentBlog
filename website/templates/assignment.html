@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 class="title">{{  item.course_title }}</h2>
+{% endblock %}
+{% block content %}
+
+        <div class="post">
+			<h2 class="title">{{course.assignment_title }}</h2>
+			<p class="date"></p>
+			<div class="entry">
+				 {{ course.assignments_title  + " : "+ course.assignments_description}}
+                <form method=post action="{{ url_for('assignment', coursetime=item.course_id,assignid=course.assignment_id)}}"  enctype="multipart/form-data">
+                    <div>
+                    <label for="inputfile"> فایل ارسالی</label>
+                    <input type="file" name="inputfile">
+                    </div>
+                    <button type="submit">ارسال</button>
+                </form>
+            </div>
+  </div><!-- /.blog-post -->
+
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=item.course_id)}}">سیلابس درس</a></li>
+					<li><a href=" {{url_for('assignment', coursetime=item.course_id)}}">تکالیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=item.course_id)}}">منابع</a></li>
+					<li><a href="{{ url_for('course', coursetime=item.course_id)}}">آرشیو اخبار</a></li>
+{% endblock %}

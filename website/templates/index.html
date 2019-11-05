@@ -1,0 +1,14 @@
+﻿{% extends "base.html" %}
+{% block content %}
+  {% for posts in post %}
+<div class="post">
+			<h2 class="title">{{  posts.post_title }}</h2>
+			<p class="date"> {{  2017 }}</p>
+			<div class="entry">
+                <p> {{ posts.post_content[0:200] + "..."  }} </p>
+                <p >{{ "نویسنده: "+ posts.author.user_name + " ،دسته بندی: " + posts.cat.cat_name +  " "}}</p>
+				<p class="links"><a href="#" class="comments">نظرات (64)</a> &nbsp;&nbsp;&nbsp; <a href="{{ url_for('showPost', postid=posts.post_id)}}" class="permalink">ادامه مطلب</a></p>
+			</div>
+		</div>
+ {% endfor %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 class="title">{{  item.course_title }}</h2>
+{% endblock %}
+{% block content %}
+    <div class="post">
+			<h2 class="title">افزودن خبر به درس</h2>
+			<p class="date"></p>
+    </div>
+<form  class="entry" id = 'contact' action ='{{ url_for('course_teacher', coursetime=item.course_id) }}' method = 'Post' >
+    <input style="display:block" name = 'name' type = 'text' value="عنوان" />
+    <textarea style="display:block" name = 'comment'>متن خبر: </textarea>
+    <input name = 'submit' type="submit" value="ارسال"/>
+</form>
+
+{% if usercomment %}
+<p> خبر به درس اضافه شد! </p>
+{% endif %}
+    {% for course in news %}
+<div class="post">
+			<h2 class="title">{{  course.news_title }}</h2>
+			<p class="date">{{ course.course_news.course_date }}</p>
+			<div class="entry">
+				 {{ course.news_description }}
+                    <p > نام استاد:  {{ author }} </p>
+                    <li><a href="{{ url_for('course_teacher_del', coursetime=course.course_news.course_id, coursenews=course.news_id)}}">حذف کردن خبر</a></li>
+					<li><a href="{{ url_for('course_teacher_edit', coursetime=item.course_id, coursenews=course.news_id)}}">ویرایش</a></li>
+            </div>
+{% if useredit %}
+<form  class="entry" id = 'contact' action ='{{ url_for('course_teacher_edit', coursetime=item.course_id, coursenews=course.news_id) }}' method = 'Post' >
+    <input style="display:block" name = 'name' type = 'text' value="عنوان" />
+    <textarea style="display:block" name = 'comment'>متن خبر: </textarea>
+    <input name = 'submit' type="submit" value="ارسال"/>
+</form>
+{% endif %}
+  </div><!-- /.blog-post -->
+  {% endfor %}
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=item.course_id)}}">سیلابس درس</a></li>
+					<li><a href="{{ url_for('assignment_teacher', coursetime=item.course_id, username=current_user.user_id)}}">تکالیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=item.course_id)}}">منابع</a></li>
+					<li><a href="{{ url_for('course_teacher', coursetime=item.course_id)}}">افزودن خبر</a></li>
+    <li><a href="{{ url_for('hw_list', coursetime=item.course_id)}}">مشاهده ی تکالیف دریافتی</a></li>
+{% endblock %}
+

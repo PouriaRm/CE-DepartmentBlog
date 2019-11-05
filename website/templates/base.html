@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml " lang="en" dir="rtl">
+<head profile="http://www.w3.org/2005/10/profile">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>گروه مهندسی کامپپیوتر</title>
+
+  <link rel="icon"
+      type="image/ico"
+      href="/website/static/images/favicon.ico">
+<meta name="keywords" content="گروه کامپیوتر" />
+<meta name="description" content="بلاگ مهندسی کامپیوتر" />
+<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="header">
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="/index">صفحه ی اصلی</a></li>
+
+                {% if current_user.is_authenticated %}
+                    <li><a href="/profile/{{current_user.user_id}}">پروفایل</a></li>
+                {% else %} <li><a href="/register">ثبت نام</a></li> {% endif %}
+
+                <li><a href="/contact">افزودن مطلب</a></li>
+				<li><a href="/aboutus">درباره ی گروه</a></li>
+                <li><a href="/coursetimeline">کلاس درس</a></li>
+
+                {% if current_user.is_authenticated %}
+                    <li><a href="/logout">خروج</a></li>
+                {% else %} <li><a href="/login">ورود</a></li> {% endif %}
+
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="search">
+			<form method="get" action="">
+				<fieldset>
+				<input type="text" name="s" id="search-text" size="15" />
+				<input type="submit" id="search-submit" value="جستجو" />
+				</fieldset>
+			</form>
+		</div>
+		<!-- end #search -->
+	</div>
+	<!-- end #header -->
+	<div id="logo">
+		<h1><a href="#">گروه مهندسی کامپیوتر </a></h1>
+		<p><em> دانشکده ی فنی <a href="http://guilan.ac.ir/">دانشگاه گیلان</a></em></p>
+	</div>
+	<hr />
+	<!-- end #logo -->
+<!-- end #header-wrapper -->
+
+<div id="page">
+
+    <div id="content">
+	{% block content %}
+		 	 <div class="post"/>
+			<h2 class="title"> {{ posttitle }}</h2>
+			<p class="date"> {{ postdate }}</p>
+			<div class="entry">
+				 {{ postcontent }}
+            </div>
+
+          {% endblock %}
+	</div>
+	<!-- end #content -->
+	<div id="sidebar">
+		<ul>
+
+			<li>
+                 {% block title %}
+				  <h2>در مورد گروه</h2>
+                 {% endblock %}
+				  {% block side %}
+				  <p> این بلاگ برای مهندسی کامپیوتر است و تمامی اخبار و موضوعات مختلف در این بلاگ ارائه می شود.</p>
+                 {% endblock %}
+				</li>
+
+			<li id="calendar">
+				<h2>تقویم</h2>
+				<div id="calendar_wrap">
+					<table summary="Calendar">
+						<caption>
+						March 2017
+						</caption>
+						<thead>
+							<tr>
+								<th abbr="Monday" scope="col" title="Monday">M</th>
+								<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+								<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+								<th abbr="Thursday" scope="col" title="Thursday">T</th>
+								<th abbr="Friday" scope="col" title="Friday">F</th>
+								<th abbr="Saturday" scope="col" title="Saturday">S</th>
+								<th abbr="Sunday" scope="col" title="Sunday">S</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td abbr="February" colspan="3" id="prev"><a href="#" title="">&laquo; Feb</a></td>
+								<td class="pad">&nbsp;</td>
+								<td abbr="April" colspan="3" id="next"><a href="#" title="">Apr &raquo;</a></td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td colspan="5" class="pad">&nbsp;</td>
+								<td>1</td>
+								<td>2</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>9</td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td id="today">11</td>
+								<td>12</td>
+								<td>13</td>
+								<td>14</td>
+								<td>15</td>
+								<td>16</td>
+							</tr>
+							<tr>
+								<td>17</td>
+								<td>18</td>
+								<td>19</td>
+								<td>20</td>
+								<td>21</td>
+								<td>22</td>
+								<td>23</td>
+							</tr>
+							<tr>
+								<td>24</td>
+								<td>25</td>
+								<td>26</td>
+								<td>27</td>
+								<td>28</td>
+								<td>29</td>
+								<td>30</td>
+							</tr>
+							<tr>
+								<td>31</td>
+								<td class="pad" colspan="6">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			<li>
+				<h2>دسته بندی ها</h2>
+				<ul>
+					<li><a href="#"></a><a href="#">وضعیت برگزاری کلاس ها</a></li>
+					<li><a href="#">سرفصل دروس</a></li>
+					<li><a href="#">فرم ها</a></li>
+					<li><a href="#">رشته های موجود</a></li>
+					<li><a href="#">آرشیو اخبار</a></li>
+					</ul>
+				</li>
+		</ul>
+	</div>
+	<!-- end #sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end #page -->
+
+<div id="footer">
+	<p>کلیه ی حقوق این سایت متعلق به گروه مهندسی کامپیوتر دانشگاه گیلان است. طراحی توسط<a href="https://github.com/PouriaRm"> PouriaRM</a>.</p>
+</div>
+<!-- end #footer -->
+</div>
+<div align=center></div></body>
+</html>

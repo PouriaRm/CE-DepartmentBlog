@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post">
+			<h2 class="title">{{  course.syllabes_title }}</h2>
+			<p class="date"></p>
+			<div class="entry">
+				 {{ course.syllabes_description }}
+
+            </div>
+  </div><!-- /.blog-post -->
+
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=course.course_syllabes.course_id)}}">سیلابس درس</a></li>
+					<li><a href="{{ url_for('assignment', coursetime=course.course_syllabes.course_id)}}">تکالیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=course.course_syllabes.course_id)}}">منابع</a></li>
+					<li><a href="{{ url_for('course', coursetime=course.course_syllabes.course_id)}}">آرشیو اخبار</a></li>
+{% endblock %}
+

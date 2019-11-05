@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-card login-background">
+    <h1>ثبت نام</h1><br>
+  <form  method="post">
+    <input type="text" name="username" placeholder="نام کاربری">
+      <input type="text" name="name" placeholder="نام">
+      <input type="text" name="email" placeholder="ایمیل">
+    <input type="password" name="password" placeholder="رمزعبور">
+    <input type="submit" name="login" class="login login-submit" value="ذخیره">
+  </form>
+
+  <div class="login-help" >
+    <p style="display:inline">آیا حساب دارید؟ </p>&nbsp;&nbsp;&nbsp; <a style="display:inline" href="/login">ورود</a>
+  </div>
+</div>
+{% endblock %}

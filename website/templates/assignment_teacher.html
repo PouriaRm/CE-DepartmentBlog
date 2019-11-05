@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+<h2 class="title">{{  item.course_title }}</h2>
+{% endblock %}
+{% block content %}
+
+    <div class="post">
+			<h2 class="title">افزودن تکلیف به درس</h2>
+			<p class="date"></p>
+
+<form  class="entry" id = 'contact' action ='{{ url_for('assignment_teacher',coursetime=item.course_id,username=current_user.user_id) }}' method = 'Post' >
+    <input style="display:block" name = 'name' type = 'text' value="عنوان" />
+    <textarea style="display:block" name = 'comment'>متن تکلیف: </textarea>
+    <input name = 'submit' type="submit" value="ارسال"/>
+</form>
+    </div>
+{% if usercomment %}
+<p> تکلیف اضافه شد! </p>
+{% endif %}
+      {% for course in courses %}
+        <div class="post">
+                <h2 class="title"> {{ course.assignments_title }} </h2>
+                <p class="date"></p>
+                <div class="entry">
+                     {{ course.assignments_title  + " : "+ course.assignments_description}}
+                        <li><a href="{{ url_for('assignment_teacher_del', coursetime=course.course_assignments.course_id, assignid=course.assignments_id)}}">حذف پست</a></li>
+                        <li><a href="{{ url_for('assignment_teacher_edit', coursetime=course.course_assignments.course_id, assignid=course.assignments_id)}}">ویرایش</a></li>
+
+                </div>
+
+        {% if useredit %}
+<form  class="entry" id = 'contact' action ='{{ url_for('assignment_teacher_edit', coursetime=course.course_assignments.course_id, assignid=course.assignments_id) }}' method = 'Post' >
+    <input style="display:block" name = 'name' type = 'text' value="عنوان" />
+    <textarea style="display:block" name = 'comment'>متن خبر: </textarea>
+    <input name = 'submit' type="submit" value="ارسال"/>
+</form>
+{% endif %}
+        </div><!-- /.blog-post -->
+         {% endfor %}
+
+
+{% endblock %}
+
+{% block side %}
+                    <li><a href="{{ url_for('syllabes', coursetime=item.course_id)}}">سیلابس درس</a></li>
+					<li><a href=" {{url_for('assignment_teacher', coursetime=item.course_id,username=current_user.user_id)}}">افزودن تکلیف</a></li>
+					<li><a href="{{ url_for('resources', coursetime=item.course_id)}}">منابع</a></li>
+					<li><a href="{{ url_for('course', coursetime=item.course_id)}}">آرشیو اخبار</a></li>
+{% endblock %}

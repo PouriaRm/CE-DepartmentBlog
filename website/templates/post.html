@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post">
+			<h2 class="title">{{  post.post_title }}</h2>
+			<p class="date">{{ post.post_id }}</p>
+			<div class="entry">
+				 {{ post.post_content }}
+                   <p >{{ "نویسنده: "+ post.author.user_name + " ،دسته بندی: " + post.cat.cat_name + " ،برچسب: " + tag_name + " "}}</p>
+            </div>
+  </div><!-- /.blog-post -->
+
+{% endblock %}
+
