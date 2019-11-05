@@ -22,6 +22,16 @@ A blogging engine based on Flask. For an [Flask](https://palletsprojects.com/p/f
 • User Notifications for assignments in their panel<br>
 • Application Programming Interfaces (APIs)<br>
 
+### Dependencies
+• certifi<br>
+• click<br>
+• Flask<br>
+• future<br>
+• Jinja2<br>
+• MarkupSafe<br>
+• virtualenv<br>
+• Werkzeug<br>
+
 ## How to run it on your host?
 If you don't know how to run flask project or even have no idea about pip please check [this article](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world).
 
@@ -37,7 +47,16 @@ flask run
 ```
 ## MySQL Setting
 This project is usuing SQLALCHEMY as a python connector to mysql.
-To change setting, please change the config file to your destination config.
+To change setting, please change the config.cfg file to your destination config.
 ```
-app.config['SQLALCHEMY_DATABASE_URI'] ='mysql+pymysql://MySQLUserName:MySqlPassword@Yourhost'
+app.config['SQLALCHEMY_DATABASE_URI'] ='mysql+pymysql://MySQLUserName:MySqlPassword@YourHostAddress'
 ```
+
+To Change Models follow this path:
+```
+CE DepartmentBlog/
+  website/
+   models.py
+```
+## Question?
+Please let me know if you have any questions.
