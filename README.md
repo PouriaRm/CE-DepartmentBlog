@@ -27,11 +27,17 @@ If you don't know how to run flask project or even have no idea about pip please
 
 After you make sure about doing everything correctly, follow the diagram of the project structure:
 ```
-microblog/
-  venv/
-  app/
-    __init__.py
-    routes.py
-  microblog.py
+CE DepartmentBlog/
+  website/
+   untitled1.py
 ```
-
+In this path, Please run below instructions in the console:
+```
+flask run
+```
+## MySQL Setting
+This project is usuing SQLALCHEMY as a python connector to mysql.
+To change setting, please change the config file to your destination config.
+```
+app.config['SQLALCHEMY_DATABASE_URI'] ='mysql+pymysql://MySQLUserName:MySqlPassword@Yourhost'
+```
